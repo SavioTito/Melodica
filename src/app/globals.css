@@ -1,13 +1,17 @@
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
+  --green: #1DB954; 
+  --white: #f7f7f7;
+  --black: #171717;
+  --grey: #aeaeae;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --paragraph-1: 18px;
+  --paragraph-2: 16px;
+  --paragraph-3: 14px;
+  --title-1: 56px;
+  --title-2: 48px; 
+  --title-3: 36px;
+  --title-4: 28px;
 }
 
 html,
@@ -15,14 +19,26 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
 }
-
+html{
+  overflow-y: hidden;
+}
 body {
+  width: 100%;
+  height: 100vh;
+  font-family: var(--inter), Arial, Helvetica, sans-serif;
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--black);
+  background-image: url("/img/m-darkground.webp");
+  background-repeat: repeat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+a{
+  text-decoration: none;
+}
+
+
 
 * {
   box-sizing: border-box;
@@ -30,13 +46,64 @@ body {
   margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.header{
+  width: 100%;
+  display: flex;
+  padding: 1% 10%;
+}
+.header .headerWrapper{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 25px 0;
+  border-bottom: .5px solid rgba(174, 174, 174, .1);
+}
+.header .logoWrapper{
+  width: 100px;
+}
+.logoWrapper img{
+  width: 100%;
+  height: inherit;
+  object-fit: contain;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.header nav{
+  flex: 1;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  color: var(--grey);
+}
+
+.header a{
+  color: var(--grey);
+  font-weight: 400;
+  font-size: var(--paragraph-3);
+  padding: 6px 8px;
+
+}.header a:hover{
+  color: var(--white);
+}
+
+footer{
+  width: 100%;
+  height: 80px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+footer .footerWrapper{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: .5px solid rgba(174, 174, 174, .1);
+}
+
+footer p{
+  text-align: center;
+  color: var(--grey);
+  font-size: var(--paragraph-3);
 }

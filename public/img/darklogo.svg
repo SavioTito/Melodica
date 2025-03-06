@@ -1,0 +1,12 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 110" width="512" height="110">
+	<title>melodica</title>
+	<style>
+		tspan { white-space:pre } 
+		.t0 { font-size: 100px;fill: #000000;font-weight: 700;font-family: "Poppins-Bold", "Poppins" } 
+		.t1 { font-size: 100px;fill: #1db954;font-weight: 700;font-family: "Poppins-Bold", "Poppins" } 
+	</style>
+	<text id="Melodica." style="transform: matrix(1,0,0,1,7.439,94.526)" >
+		<tspan x="0" y="0" class="t0">M</tspan><tspan  y="0" class="t0">e</tspan><tspan  y="0" class="t0">l</tspan><tspan  y="0" class="t0">o</tspan><tspan  y="0" class="t0">d</tspan><tspan  y="0" class="t0">i</tspan><tspan  y="0" class="t0">c</tspan><tspan  y="0" class="t0">a</tspan><tspan  y="0" class="t1">.
+</tspan>
+	</text>
+</svg>

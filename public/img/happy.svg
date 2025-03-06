@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="144.79256"
+   height="119.59814"
+   viewBox="0 0 144.79256 119.59814"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="g11"
+     style="display:inline"
+     transform="translate(-759.84946,-253.1554)">
+    <circle
+       style="display:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       id="path10"
+       cx="833.93524"
+       cy="296.74832"
+       r="132.17419" />
+    <path
+       style="display:inline;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 760.30539,264.02358 38.36593,-7.11626 19.80177,15.9858 -18.77043,63.3244 2.06269,16.60461 16.19207,5.05358 17.53281,-21.55505 -4.12537,-8.56014"
+       id="path6" />
+    <path
+       style="display:inline;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 848.90666,264.36417 17.01003,-8.50501 37.91819,12.93471"
+       id="path7" />
+    <path
+       style="display:inline;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 769.3841,335.49592 c 0,0 42.9038,77.15473 126.18765,1.80268"
+       id="path8" />
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5.08661;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       id="path9"
+       cx="790.65247"
+       cy="287.96121"
+       r="7.096231" />
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5.087;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       id="circle9"
+       cx="868.65247"
+       cy="287.96121"
+       r="7.096231" />
+  </g>
+</svg>

@@ -1,0 +1,112 @@
+html,
+body {
+  overflow-y: hidden;
+}
+
+.moodSelection {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10vh;
+}
+
+.moodSelection h1 {
+  width: 48%;
+  text-align: center;
+  font-weight: bold;
+  font-size: var(--title-1);
+  background: linear-gradient(
+    90deg,
+    var(--background),
+    var(--grey),
+    var(--black)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 7vh;
+}
+.moodSelection .moodSelectionWrapper{
+    width: 80%;
+}
+
+.moodSelectionWrapper .groupMood {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.moodSelectionWrapper .moodCard {
+  width: 20%;
+  height: 130px;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  position: relative;
+  padding: 20px;
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.15s;
+  background-color: var(--white);
+}
+.moodCard:active {
+  transform: scale(1.05);
+}
+
+.moodCard input {
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border: 2px solid var(--black);
+  cursor: pointer;
+  background-color: transparent;
+}
+.moodCard input:checked {
+  outline-color: var(--green);
+  background-color: var(--black);
+}
+
+.moodCardContent {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 35%;
+}
+
+.moodCardContent img {
+  width: 30px;
+  height: 30px;
+  margin: 10px 0 10px 0;
+}
+
+.moodCardContent span {
+  font-size: var(--paragraph-2);
+  font-weight: 400;
+  color: var(--black);
+}
+
+.moodSelectionWrapper .moodSubmit{
+    display: flex;
+    padding: 13px 18px;
+    margin: 6% 0 0 9%;
+    border: none;
+    border-radius: 25px;
+    color: var(--black);
+    font-size: var(--paragraph-3);
+    cursor: pointer;
+    background-color: var(--white);
+}
+.moodSubmit .moodSubmitIcon{
+    width: 17px;
+    height: 17px;
+    margin-right: 2px;
+}
+.moodSubmit:disabled{
+    cursor: not-allowed;
+    background-color: var(--grey);
+}
