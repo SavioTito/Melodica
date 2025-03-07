@@ -5,11 +5,22 @@ import Image from "next/image";
 import Icons from "@/components/icons";
 import "./mood-selection.css";
 
+// Mood to genres mapping
+const moodToGenres = {
+  happy: ["pop", "disco", "funk"],
+  relaxed: ["lo-fi", "jazz", "ambient"],
+  focus: ["classical", "instrumental", "minimal"],
+  romantic: ["r&b", "soul", "neo-soul"],
+  sad: ["indie", "acoustic", "blues"],
+  angry: ["rock", "metal", "punk"],
+};
+
 export default function MoodSelection() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [token, setToken] = useState(null);
   const [selectedMood, setSelectedMood] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     let accessToken = searchParams.get("access_token");
@@ -24,16 +35,60 @@ export default function MoodSelection() {
 
     setToken(accessToken);
     router.replace("/mood-selection");
-  }, []);
+  }, [searchParams, router]);
 
+  const fetchPlaylistsByGenres = async (genres) => {
+    const playlists = [];
+    for (const genre of genres) {
+      const response = await fetch(
+        `https://api.spotify.com/v1/search?q=${genre}&type=playlist&limit=5`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        playlists.push(...data.playlists.items);
+      } else {
+        console.error(`Error fetching playlists for genre: ${genre}`);
+      }
+    }
+    return playlists;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!selectedMood || !token) return;
   
-  console.log("TOKEN DE ACESSO: ",token);
+    setIsLoading(true);
+  
+    try {
+      // Get genres for the selected mood
+      const genres = moodToGenres[selectedMood];
+      if (!genres) throw new Error("Invalid mood selected");
+  
+      // Fetch playlists for the genres
+      const playlists = await fetchPlaylistsByGenres(genres);
+  
+      // Store playlists in sessionStorage
+      sessionStorage.setItem("playlists", JSON.stringify(playlists));
+  
+      // Redirect to recommendations page
+      router.push("/recommendations");
+    } catch (error) {
+      console.error("Error fetching playlists:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <main className="moodSelection">
       <h1>Conte-nos como te sentes e nós recomendamos-te a música perfeita</h1>
       <div className="moodSelectionWrapper">
-        <form >
+        <form onSubmit={handleSubmit}>
           <div className="groupMood">
             {[
               { id: "happy", label: "Feliz", img: "/img/happy.svg" },
@@ -64,9 +119,19 @@ export default function MoodSelection() {
             ))}
           </div>
 
-          <button type="submit" className="moodSubmit" disabled={!selectedMood}>
-            <Icons.Search className="moodSubmitIcon" />
-            Buscar músicas
+          <button
+            type="submit"
+            className="moodSubmit"
+            disabled={!selectedMood || isLoading}
+          >
+            {isLoading ? (
+              "Carregando..."
+            ) : (
+              <>
+                <Icons.Search className="moodSubmitIcon" />
+                Buscar músicas
+              </>
+            )}
           </button>
         </form>
       </div>
