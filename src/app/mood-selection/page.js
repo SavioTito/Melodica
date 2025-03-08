@@ -6,14 +6,59 @@ import Icons from "@/components/icons";
 import "./mood-selection.css";
 
 // Mood to genres mapping
+// Updated mood to genres mapping
 const moodToGenres = {
-  happy: ["pop", "disco", "funk"],
-  relaxed: ["lo-fi", "jazz", "ambient"],
-  focus: ["classical", "instrumental", "minimal"],
-  romantic: ["r&b", "soul", "neo-soul"],
-  sad: ["indie", "acoustic", "blues"],
-  angry: ["rock", "metal", "punk"],
+  happy: [
+    "pop",
+    "disco",
+    "house",
+    "funk",
+    "reggaeton",
+    "dancehall",
+    "afrobeats",
+    "k-pop",
+    "samba",
+    "kuduro",
+    "semba"
+  ],
+  relaxed: [
+    "lo-fi",
+    "jazz",
+    "ambient",
+    "reggae",
+    "country",
+    "amapiano",
+    "kizomba"
+  ],
+  focus: [
+    "classical",
+    "instrumental",
+    "minimal",
+    "electronic"
+  ],
+  romantic: [
+    "r&b",
+    "soul",
+    "neo-soul",
+    "flamenco",
+    "gospel"
+  ],
+  sad: [
+    "indie",
+    "acoustic",
+    "blues",
+    "folk",
+    "fado"
+  ],
+  angry: [
+    "rock",
+    "metal",
+    "punk",
+    "rap",
+    "trap"
+  ],
 };
+
 
 export default function MoodSelection() {
   const searchParams = useSearchParams();

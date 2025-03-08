@@ -38,17 +38,19 @@ export default function RootLayout({ children }) {
                 <a
                   href="https://www.linkedin.com/in/s%C3%A1vio-tito-023a55217/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   LinkedIn
                 </a>
                 /
-                <a href="https://github.com/SavioTito" target="_blank">
+                <a href="https://github.com/SavioTito" target="_blank" rel="noopener noreferrer">
                   GitHub
                 </a>
                 /
                 <a
                   href="https://www.instagram.com/its.saviotito/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Instagram
                 </a>
