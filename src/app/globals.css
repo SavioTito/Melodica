@@ -82,7 +82,6 @@ a{
   font-weight: 400;
   font-size: var(--paragraph-3);
   padding: 6px 8px;
-
 }.header a:hover{
   color: var(--white);
 }
@@ -108,4 +107,11 @@ footer p{
   text-align: center;
   color: var(--grey);
   font-size: var(--paragraph-3);
+}
+
+/*Resonsiveness*/
+@media (max-width: 844px) and (orientation: landscape) {
+  .header{
+    height: 20vh;
+  }
 }
