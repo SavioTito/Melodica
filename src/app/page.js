@@ -26,6 +26,9 @@ export default function Home() {
             sentindo? Aqui, você escolhe seu mood, e a gente te entrega a trilha
             sonora perfeita, direto do Spotify. 🔥
           </p>
+          <p className={styles.description2}>
+          Escolha seu mood e receba a trilha sonora perfeita do Spotify. 🔥
+          </p>
           <div className={styles.cto}>
             <button className={styles.cta} onClick={handleLogin}>
               Começar
