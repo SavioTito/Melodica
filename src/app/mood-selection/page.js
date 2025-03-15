@@ -1,12 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Icons from "@/components/icons";
 import "./mood-selection.css";
 
 // Mood to genres mapping
-// Updated mood to genres mapping
 const moodToGenres = {
   happy: [
     "pop",
@@ -19,48 +18,16 @@ const moodToGenres = {
     "k-pop",
     "samba",
     "kuduro",
-    "semba"
+    "semba",
   ],
-  relaxed: [
-    "lo-fi",
-    "jazz",
-    "ambient",
-    "reggae",
-    "country",
-    "amapiano",
-    "kizomba"
-  ],
-  focus: [
-    "classical",
-    "instrumental",
-    "minimal",
-    "electronic"
-  ],
-  romantic: [
-    "r&b",
-    "soul",
-    "neo-soul",
-    "flamenco",
-    "gospel"
-  ],
-  sad: [
-    "indie",
-    "acoustic",
-    "blues",
-    "folk",
-    "fado"
-  ],
-  angry: [
-    "rock",
-    "metal",
-    "punk",
-    "rap",
-    "trap"
-  ],
+  relaxed: ["lo-fi", "jazz", "ambient", "reggae", "country", "amapiano", "kizomba"],
+  focus: ["classical", "instrumental", "minimal", "electronic"],
+  romantic: ["r&b", "soul", "neo-soul", "flamenco", "gospel"],
+  sad: ["indie", "acoustic", "blues", "folk", "fado"],
+  angry: ["rock", "metal", "punk", "rap", "trap"],
 };
 
-
-export default function MoodSelection() {
+function MoodSelectionContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [token, setToken] = useState(null);
@@ -106,21 +73,17 @@ export default function MoodSelection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!selectedMood || !token) return;
-  
+
     setIsLoading(true);
-  
+
     try {
-      // Get genres for the selected mood
       const genres = moodToGenres[selectedMood];
       if (!genres) throw new Error("Invalid mood selected");
-  
-      // Fetch playlists for the genres
+
       const playlists = await fetchPlaylistsByGenres(genres);
-  
-      // Store playlists in sessionStorage
+
       sessionStorage.setItem("playlists", JSON.stringify(playlists));
-  
-      // Redirect to recommendations page
+
       router.push("/recommendations");
     } catch (error) {
       console.error("Error fetching playlists:", error);
@@ -152,12 +115,7 @@ export default function MoodSelection() {
                   onChange={() => setSelectedMood(mood.id)}
                 />
                 <div className="moodCardContent">
-                  <Image
-                    src={mood.img}
-                    alt={mood.label}
-                    width={50}
-                    height={50}
-                  />
+                  <Image src={mood.img} alt={mood.label} width={50} height={50} />
                   <span>{mood.label}</span>
                 </div>
               </label>
@@ -181,5 +139,13 @@ export default function MoodSelection() {
         </form>
       </div>
     </main>
+  );
+}
+
+export default function MoodSelection() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MoodSelectionContent />
+    </Suspense>
   );
 }

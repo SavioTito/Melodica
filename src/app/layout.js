@@ -3,6 +3,8 @@
 import { Inter, Montserrat } from "next/font/google";
 import { usePathname } from "next/navigation";
 import "./globals.css";
+import Link from "next/link";
+import Image from "next/image";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,30 +32,30 @@ export default function RootLayout({ children }) {
           <header className="header">
             <div className="headerWrapper">
               <div className="logoWrapper">
-                <a href="/">
-                  <img src="/img/whitelogo.svg" alt="Melodica" />
-                </a>
+                <Link href="/">
+                  <Image src="/img/whitelogo.svg" alt="Melodica" />
+                </Link>
               </div>
               <nav>
-                <a
+                <Link
                   href="https://www.linkedin.com/in/s%C3%A1vio-tito-023a55217/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   LinkedIn
-                </a>
+                </Link>
                 /
-                <a href="https://github.com/SavioTito" target="_blank" rel="noopener noreferrer">
+                <Link href="https://github.com/SavioTito" target="_blank" rel="noopener noreferrer">
                   GitHub
-                </a>
+                </Link>
                 /
-                <a
+                <Link
                   href="https://www.instagram.com/its.saviotito/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Instagram
-                </a>
+                </Link>
               </nav>
             </div>
           </header>

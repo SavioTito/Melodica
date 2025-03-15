@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import "./recommendations.css";
 import Icons from "@/components/icons";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Recommendations() {
   const [playlists, setPlaylists] = useState([]);
@@ -35,19 +37,19 @@ export default function Recommendations() {
           {playlists.map((playlist, index) => (
             <div key={`${playlist.id}-${index}`} className="playlist">
               <div className="playlistCover">
-                <img src={playlist.images[0].url} alt="playlist" />
+                <Image src={playlist.images[0].url} alt="playlist" />
               </div>
               <div className="playlistDetails">
                 <h2>{playlist.name}</h2>
                 <p>{playlist.description}</p>
-                <a
+                <Link
                   href={playlist.external_urls.spotify}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Ver playlist
                   <Icons.Link className="playlistOpenIcon"/>
-                </a>
+                </Link>
               </div>
             </div>
           ))}
