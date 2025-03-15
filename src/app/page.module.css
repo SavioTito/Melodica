@@ -163,6 +163,30 @@
 }
 
 /*Responsive*/
+@media (max-width: 820px){
+  .title {
+    width: 100%;
+    font-size: var(--title-1);
+  }
+  .description{
+    display: none;
+  }
+  .description2{
+    display: block;
+  }
+
+  .genres{
+    height: 15vh;
+  }
+
+  .steps {
+    padding: 2% 5%;
+  }
+  .stepsWrapper h2{
+    width: 80%;
+  }
+}
+
 @media (max-width: 480px) {
   .banner {
     height: 63vh;
@@ -241,7 +265,7 @@
   .genres li {
     font-size: var(--title-5);
   }
-  
+
   .steps {
     padding: 2% 5%;
   }
