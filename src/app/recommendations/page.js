@@ -37,7 +37,12 @@ export default function Recommendations() {
           {playlists.map((playlist, index) => (
             <div key={`${playlist.id}-${index}`} className="playlist">
               <div className="playlistCover">
-                <Image src={playlist.images[0].url} alt="playlist" />
+                <Image
+                  src={playlist.images[0].url}
+                  alt="playlist"
+                  width={100}
+                  height={100}
+                />
               </div>
               <div className="playlistDetails">
                 <h2>{playlist.name}</h2>
@@ -48,7 +53,7 @@ export default function Recommendations() {
                   rel="noopener noreferrer"
                 >
                   Ver playlist
-                  <Icons.Link className="playlistOpenIcon"/>
+                  <Icons.Link className="playlistOpenIcon" />
                 </Link>
               </div>
             </div>

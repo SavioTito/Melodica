@@ -6,6 +6,8 @@ import "./globals.css";
 import Link from "next/link";
 import Image from "next/image";
 
+import Logo from "/public/img/whitelogo.svg"
+
 const inter = Inter({
   subsets: ["latin"],
   weights: ["400", "700"],
@@ -33,7 +35,7 @@ export default function RootLayout({ children }) {
             <div className="headerWrapper">
               <div className="logoWrapper">
                 <Link href="/">
-                  <Image src="/img/whitelogo.svg" alt="Melodica" />
+                  <Image src={Logo} alt="Melodica" />
                 </Link>
               </div>
               <nav>

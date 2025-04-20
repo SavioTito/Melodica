@@ -109,3 +109,10 @@ html {
     cursor: not-allowed;
     background-color: var(--grey);
 }
+
+/*Responsive*/
+@media (max-width: 820px){
+  .moodSelection h1{
+    width: 100%;
+  }
+}

@@ -20,7 +20,15 @@ const moodToGenres = {
     "kuduro",
     "semba",
   ],
-  relaxed: ["lo-fi", "jazz", "ambient", "reggae", "country", "amapiano", "kizomba"],
+  relaxed: [
+    "lo-fi",
+    "jazz",
+    "ambient",
+    "reggae",
+    "country",
+    "amapiano",
+    "kizomba",
+  ],
   focus: ["classical", "instrumental", "minimal", "electronic"],
   romantic: ["r&b", "soul", "neo-soul", "flamenco", "gospel"],
   sad: ["indie", "acoustic", "blues", "folk", "fado"],
@@ -115,7 +123,12 @@ function MoodSelectionContent() {
                   onChange={() => setSelectedMood(mood.id)}
                 />
                 <div className="moodCardContent">
-                  <Image src={mood.img} alt={mood.label} width={50} height={50} />
+                  <Image
+                    src={mood.img}
+                    alt={mood.label}
+                    width={50}
+                    height={50}
+                  />
                   <span>{mood.label}</span>
                 </div>
               </label>
