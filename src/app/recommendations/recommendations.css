@@ -1,111 +1,112 @@
-html{
-    overflow-y: hidden;
+html {
+  overflow-y: hidden;
 }
-.playlistContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 10%;
+.playlistContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10%;
 }
-.playlistBanner{
-    width: 100%;
-    height: 25vh;
-    border-radius: 10px;
-    margin: 20px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url("/img/sad_ground.jpg");
+.playlistBanner {
+  width: 100%;
+  height: 30vh;
+  border-radius: 10px;
+  margin: 20px;
+  background-size: cover;
+  background-repeat: repeat;
 }
-.playlistBanner .bannerContent{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    padding: 0 0 50px 50px;
-    border-radius: 10px;
-    background: linear-gradient(to top, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0));
+.playlistBanner .bannerContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 0 0 50px 50px;
+  border-radius: 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
 }
-.bannerContent .bannerTitle{
-    width: 50%;
-    font-size: var(--title-3);
-    font-weight:bolder;
-    color: var(--white);
-    margin-bottom: 7px;
+.bannerContent .bannerTitle {
+  width: 50%;
+  font-size: var(--title-3);
+  font-weight: bolder;
+  color: var(--white);
+  margin-bottom: 7px;
 }
-.bannerContent span{
-    font-size: var(--paragraph-2);
-    color: var(--white);
-}
-
-.playlistWrapper{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-.playlistGrid{
-    width: 75%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    flex-direction: row;
-}
-.playlistGrid .playlist{
-    width:49%;
-    height: 240px;
-    display: flex;
-}
-.playlist .playlistCover{
-    width: 40%;
-    height: auto;
-    display: flex;
-    align-items: end;
-}.playlistCover img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.bannerContent span {
+  font-size: var(--paragraph-2);
+  color: var(--white);
 }
 
-.playlist .playlistDetails{
-    width: 60%;
-    height: auto;
-    padding: 0 0 3% 5% ;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
+.playlistWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
-.playlistDetails h2{
-    font-size: var(--title-5);
-    font-weight: bolder;
-    color: var(--white);
-    margin-bottom: 5px;
+.playlistGrid {
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex-direction: row;
 }
-.playlistDetails p{
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.4;
-    max-height: 3em;
-    font-size: var(--paragraph-3);
-    color: var(--white);
-    font-weight: 300;
-    margin-bottom: 20px;
+.playlistGrid .playlist {
+  width: 49%;
+  height: 240px;
+  display: flex;
 }
-.playlistDetails a{
-    max-width: 140px;
-    display: inline-flex;
-    padding: 12px 20px;
-    font-size: var(--paragraph-3);
-    color: var(--black);
-    border-radius: 25px;
-    background-color: var(--white);
-}.playlistDetails .playlistOpenIcon{
-    width: 17px;
-    height: 17px;
-    position: relative;
-    top: 4px;
-    left: 4px;
+.playlist .playlistCover {
+  width: 40%;
+  height: auto;
+  display: flex;
+  align-items: end;
+}
+.playlistCover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playlist .playlistDetails {
+  width: 60%;
+  height: auto;
+  padding: 0 0 3% 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.playlistDetails h2 {
+  font-size: var(--title-5);
+  font-weight: bolder;
+  color: var(--white);
+  margin-bottom: 5px;
+}
+.playlistDetails p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  max-height: 3em;
+  font-size: var(--paragraph-3);
+  color: var(--white);
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.playlistDetails a {
+  max-width: 140px;
+  display: inline-flex;
+  padding: 12px 20px;
+  font-size: var(--paragraph-3);
+  color: var(--black);
+  border-radius: 25px;
+  background-color: var(--white);
+}
+.playlistDetails .playlistOpenIcon {
+  width: 17px;
+  height: 17px;
+  position: relative;
+  top: 4px;
+  left: 4px;
 }

@@ -91,6 +91,7 @@ function MoodSelectionContent() {
       const playlists = await fetchPlaylistsByGenres(genres);
 
       sessionStorage.setItem("playlists", JSON.stringify(playlists));
+      sessionStorage.setItem("userMood", selectedMood);
 
       router.push("/recommendations");
     } catch (error) {
