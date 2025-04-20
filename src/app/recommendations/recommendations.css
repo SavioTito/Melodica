@@ -13,7 +13,7 @@ html {
   height: 30vh;
   border-radius: 10px;
   margin: 20px;
-  background-size: cover;
+  background-size: contain;
   background-repeat: repeat;
 }
 .playlistBanner .bannerContent {
