@@ -5,6 +5,7 @@ import Icons from "@/components/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { title } from "process";
+import { formatDuration } from "@/utils/spotify";
 
 const moodBanners = {
   happy: {
@@ -68,7 +69,6 @@ export default function Recommendations() {
 
   const moodData = moodBanners[mood];
 
-  console.log(playlists);
   return (
     <main className="playlistContainer">
       <header
@@ -117,13 +117,13 @@ export default function Recommendations() {
                   </td>
                   <td className="description">
                     {playlist.description.length > 30
-                      ? playlist.description.substring(0, 20).toLowerCase() +
+                      ? playlist.description.substring(0, 50).toLowerCase() +
                         "..."
                       : playlist.description.toLowerCase() ||
                         "No description for this. Just feel it "}
                   </td>
                   <td>{playlist.tracks.total}</td>
-                  <td>67 horas</td>
+                  <td>{formatDuration(playlist.durationMs)}</td>
                   <td>
                     <button className="savePlaylist">
                       <Icons.Save className="playlistsIcon" />
