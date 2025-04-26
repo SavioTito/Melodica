@@ -90,31 +90,60 @@ export default function Recommendations() {
       </header>
 
       <section className="playlistWrapper">
-        <div className="playlistGrid">
-          {playlists.map((playlist, index) => (
-            <div key={`${playlist.id}-${index}`} className="playlist">
-              <div className="playlistCover">
-                <Image
-                  src={playlist.images[0].url}
-                  alt="playlist"
-                  width={100}
-                  height={100}
-                />
-              </div>
-              <div className="playlistDetails">
-                <h2>{playlist.name}</h2>
-                <p>{playlist.description}</p>
-                <Link
-                  href={playlist.external_urls.spotify}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Ver playlist
-                  <Icons.Link className="playlistOpenIcon" />
-                </Link>
-              </div>
-            </div>
-          ))}
+        <div className="table-container">
+          <table className="table">
+            <thead>
+              <tr>
+                <th className="table-head">Title</th>
+                <th className="table-head">Description</th>
+                <th className="table-head">Tracks</th>
+                <th className="table-head">Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              {playlists.map((playlist, index) => (
+                <tr key={`${playlist.id}-${index}`}>
+                  <td className="title-column">
+                    <Image
+                      src={playlist.images[0].url}
+                      alt="icone"
+                      width={55}
+                      height={55}
+                      className="playlist-image"
+                    />
+                    {playlist.name.length > 30
+                      ? playlist.name.substring(0, 25).toUpperCase() + "..."
+                      : playlist.name.toUpperCase()}
+                  </td>
+                  <td className="description">
+                    {playlist.description.length > 30
+                      ? playlist.description.substring(0, 20).toLowerCase() +
+                        "..."
+                      : playlist.description.toLowerCase() ||
+                        "No description for this. Just feel it "}
+                  </td>
+                  <td>{playlist.tracks.total}</td>
+                  <td>67 horas</td>
+                  <td>
+                    <button className="savePlaylist">
+                      <Icons.Save className="playlistsIcon" />
+                    </button>
+                  </td>
+                  <td>
+                    <Link
+                      href={playlist.external_urls.spotify}
+                      className="openPlaylist"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Abrir
+                      <Icons.Link className="playlistsIcon" />
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
     </main>

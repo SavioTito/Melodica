@@ -3,9 +3,9 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Icons from "@/components/icons";
+import { fetchPlaylistsByGenres } from "@/utils/spotify";
 import "./mood-selection.css";
 
-// Mood to genres mapping
 const moodToGenres = {
   happy: [
     "pop",
@@ -54,29 +54,7 @@ function MoodSelectionContent() {
     }
 
     setToken(accessToken);
-    router.replace("/mood-selection");
   }, [searchParams, router]);
-
-  const fetchPlaylistsByGenres = async (genres) => {
-    const playlists = [];
-    for (const genre of genres) {
-      const response = await fetch(
-        `https://api.spotify.com/v1/search?q=${genre}&type=playlist&limit=5`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      if (response.ok) {
-        const data = await response.json();
-        playlists.push(...data.playlists.items);
-      } else {
-        console.error(`Error fetching playlists for genre: ${genre}`);
-      }
-    }
-    return playlists;
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -88,7 +66,7 @@ function MoodSelectionContent() {
       const genres = moodToGenres[selectedMood];
       if (!genres) throw new Error("Invalid mood selected");
 
-      const playlists = await fetchPlaylistsByGenres(genres);
+      const playlists = await fetchPlaylistsByGenres(genres, token);
 
       sessionStorage.setItem("playlists", JSON.stringify(playlists));
       sessionStorage.setItem("userMood", selectedMood);
