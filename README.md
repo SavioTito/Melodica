@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🎶 Melodica
 
-First, run the development server:
+**Melodica** is a mood-based music recommendation app that helps you discover playlists based on how you feel
+
+## 🌟 Features
+
+- 🔐 Connect your Spotify account with OAuth
+- 😌 Select your current mood (Happy, Sad, relaxed, focused, romantic, and angry)
+- 🔍 Get playlist recommendations tailored to your mood
+- 🎧 Open playlists directly in Spotify
+- 💾 Save the ones you love to your Spotify library
+
+## 🚀 Built With
+
+- [Next.js](https://nextjs.org/) – React framework for SSR and fast builds
+- [Spotify Web API](https://developer.spotify.com/documentation/web-api/)
+- [OAuth 2.0](https://developer.spotify.com/documentation/general/guides/authorization-guide/) – for Spotify login
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js (18+ recommended)
+- A Spotify Developer account ([Create here](https://developer.spotify.com/dashboard/))
+
+### Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/SavioTito/melodica.git
+cd melodica
+
+# Install dependencies
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory and add:
+
+```env
+SPOTIFY_CLIENT_ID=your_spotify_client_id
+SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+SPOTIFY_REDIRECT_URI=http://localhost:3000/api/auth/callback
+NEXT_PUBLIC_FRONTEND_URL=http://localhost:3000/
+
+```
+
+Make sure your **Spotify app settings** have the redirect URI set to match.
+
+### Running the App
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📸 Screenshots
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![Melodica homepage](./public/preview.png)
 
-## Learn More
+## 🤝 Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](./LICENSE)
