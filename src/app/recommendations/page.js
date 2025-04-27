@@ -10,39 +10,39 @@ import { formatDuration } from "@/utils/spotify";
 const moodBanners = {
   happy: {
     image: "/img/happyBanner.svg",
-    title: "Feliz e com ritmo! 🎉",
+    title: "Happy and groovin'! 🎉",
     description:
-      "Sons contagiantes pra acompanhar teu bom humor. De pop a kuduro, deixa a batida guiar teu sorriso.",
+      "Catchy beats to match your good mood. From pop to kuduro, let the rhythm guide your smile.",
   },
   relaxed: {
     image: "/img/relaxedBanner.svg",
-    title: "Relax total 😌",
+    title: "Total chill 😌",
     description:
-      "Músicas suaves pra descontrair e curtir o momento. Jazz, lo-fi, kizomba... é só sentir.",
+      "Smooth tunes to unwind and enjoy the moment. Jazz, lo-fi, kizomba... just feel it.",
   },
   focus: {
     image: "/img/focusBanner.svg",
-    title: "Foco no objetivo 🎯",
+    title: "Focused on the goal 🎯",
     description:
-      "Instrumentais e eletrônicas que te mantêm produtivo e centrado. Sem distrações, só flow.",
+      "Instrumentals and electronic beats to keep you productive and in the zone. No distractions, just flow.",
   },
   romantic: {
     image: "/img/romanticBanner",
-    title: "Amor no ar 💘",
+    title: "Love in the air 💘",
     description:
-      "Trilhas que tocam o coração. De soul a flamenco, sinta a vibe apaixonada no ar.",
+      "Tracks that touch the heart. From soul to flamenco, feel the romantic vibe in the air.",
   },
   sad: {
     image: "/img/sadBanner.svg",
-    title: "Momento introspectivo 🌧️",
+    title: "Introspective moment 🌧️",
     description:
-      "Músicas pra refletir e sentir. Acalma o peito com tons suaves e profundos.",
+      "Songs to reflect and feel. Calm your heart with smooth, deep tones.",
   },
   angry: {
     image: "/img/angryBanner.svg",
-    title: "Solta tudo! 🔥",
+    title: "Let it all out! 🔥",
     description:
-      "Quando a energia tá intensa, o som também tem que ser. Rock, trap, metal – libera geral.",
+      "When the energy is intense, the sound needs to match. Rock, trap, metal – let it all go.",
   },
 };
 
@@ -136,7 +136,7 @@ export default function Recommendations() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Abrir
+                      Open
                       <Icons.Link className="playlistsIcon" />
                     </Link>
                   </td>

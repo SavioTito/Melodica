@@ -81,17 +81,19 @@ function MoodSelectionContent() {
 
   return (
     <main className="moodSelection">
-      <h1>Conte-nos como te sentes e nós recomendamos-te a música perfeita</h1>
+      <h1>
+        Tell us how you feel and we'll recommend the perfect playlists for you
+      </h1>
       <div className="moodSelectionWrapper">
         <form onSubmit={handleSubmit}>
           <div className="groupMood">
             {[
-              { id: "happy", label: "Feliz", img: "/img/happy.svg" },
-              { id: "relaxed", label: "Tranquilo", img: "/img/relaxed.svg" },
-              { id: "focus", label: "Focado", img: "/img/focus.svg" },
-              { id: "romantic", label: "Apaixonado", img: "/img/romantic.svg" },
-              { id: "sad", label: "Triste", img: "/img/sad.svg" },
-              { id: "angry", label: "Chateado", img: "/img/angry.svg" },
+              { id: "happy", label: "Happy", img: "/img/happy.svg" },
+              { id: "relaxed", label: "Chill", img: "/img/relaxed.svg" },
+              { id: "focus", label: "Focused", img: "/img/focus.svg" },
+              { id: "romantic", label: "In love", img: "/img/romantic.svg" },
+              { id: "sad", label: "Sad", img: "/img/sad.svg" },
+              { id: "angry", label: "Mad", img: "/img/angry.svg" },
             ].map((mood) => (
               <label key={mood.id} htmlFor={mood.id} className="moodCard">
                 <input
@@ -124,7 +126,7 @@ function MoodSelectionContent() {
             ) : (
               <>
                 <Icons.Search className="moodSubmitIcon" />
-                Buscar músicas
+                Get playlists
               </>
             )}
           </button>

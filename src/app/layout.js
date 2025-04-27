@@ -6,7 +6,7 @@ import "./globals.css";
 import Link from "next/link";
 import Image from "next/image";
 
-import Logo from "/public/img/whitelogo.svg"
+import Logo from "/public/img/whitelogo.svg";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,7 +47,11 @@ export default function RootLayout({ children }) {
                   LinkedIn
                 </Link>
                 /
-                <Link href="https://github.com/SavioTito" target="_blank" rel="noopener noreferrer">
+                <Link
+                  href="https://github.com/SavioTito"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   GitHub
                 </Link>
                 /
@@ -68,7 +72,7 @@ export default function RootLayout({ children }) {
         {!hideHeaderFooter && (
           <footer>
             <div className="footerWrapper">
-              <p>© 2021 Melodica. Todos os direitos reservados.</p>
+              <p>© 2021 Melodica. All rights reserved.</p>
             </div>
           </footer>
         )}

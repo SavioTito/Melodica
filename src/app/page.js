@@ -5,8 +5,6 @@ import styles from "./page.module.css";
 import Icons from "@/components/icons";
 import { useRouter } from "next/navigation";
 
-
-
 export default function Home() {
   const router = useRouter();
 
@@ -19,19 +17,20 @@ export default function Home() {
       <section className={styles.banner}>
         <div className={styles.bannerWrapper}>
           <h1 className={styles.title}>
-            A música que você precisa, no momento certo
+            The music you need, just when you need it
           </h1>
           <p className={styles.description}>
-            Sabe aquele som que encaixa perfeitamente com o que você tá
-            sentindo? Aqui, você escolhe seu mood, e a gente te entrega a trilha
-            sonora perfeita, direto do Spotify. 🔥
+            You know that song that just gets how you’re feeling? Here, you pick
+            your mood, and we’ll drop the perfect soundtrack—straight from
+            Spotify. 🔥
           </p>
           <p className={styles.description2}>
-          Escolha seu mood e receba a trilha sonora perfeita do Spotify. 🔥
+            Set your vibe, and we’ll hit you with the perfect Spotify
+            soundtrack. 🔥
           </p>
           <div className={styles.cto}>
             <button className={styles.cta} onClick={handleLogin}>
-              Começar
+              Get started
               <Icons.Link className={styles.linkIcon} />
             </button>
           </div>
@@ -74,44 +73,40 @@ export default function Home() {
 
       <section className={styles.steps}>
         <div className={styles.stepsWrapper}>
-          <h2>
-            Receba sugestões de músicas que combinarão com você no momento
-          </h2>
-          <span className={styles.stepsSign}>Passos</span>
+          <h2>Get song suggestions that match your vibe in the moment</h2>
+          <span className={styles.stepsSign}>Steps</span>
           <div className={styles.stepsContent}>
             <div className={styles.stepCard}>
               <Icons.FingerPrint className={styles.stepIcon} />
-              <h3>Acesse o Spotify</h3>
+              <h3>Access Spotify</h3>
               <p>
-                Conecte a sua conta Spotify e a gente gerenciará as suas
-                playlists com base no que estás sentindo.
+                Connect your Spotify account and we'll manage your playlists
+                based on how you're feeling.
               </p>
             </div>
 
             <div className={styles.stepCard}>
               <Icons.Feeling className={styles.stepIcon} />
-              <h3>Escolha seu mood</h3>
+              <h3>Choose your mood</h3>
               <p>
-                Selecione como você está se sentindo no momento e deixe a mágica
-                acontecer.
+                Tell us how you're feeling right now and let the magic happen.
               </p>
             </div>
 
             <div className={styles.stepCard}>
               <Icons.Playlist className={styles.stepIcon} />
-              <h3>Receba sugestões de Playlist</h3>
+              <h3>Get playlist suggestions</h3>
               <p>
-                Nós vamos te recomendar as melhores playlists do Spotify que
-                combinam com o seu mood.
+                We’ll recommend the best Spotify playlists that match your mood.
               </p>
             </div>
 
             <div className={styles.stepCard}>
               <Icons.Save className={styles.stepIcon} />
-              <h3>Salve Playlist</h3>
+              <h3>Save Playlist</h3>
               <p>
-                Se gostou da seleção, salve a playlist no seu Spotify e ouça
-                quando quiser.
+                If you liked the selection, save the playlist to your Spotify
+                and listen whenever you want.
               </p>
             </div>
           </div>
