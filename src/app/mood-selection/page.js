@@ -82,7 +82,7 @@ function MoodSelectionContent() {
   return (
     <main className="moodSelection">
       <h1>
-        Tell us how you feel and we'll recommend the perfect playlists for you
+        Tell us how you feel and we will recommend the perfect playlists for you
       </h1>
       <div className="moodSelectionWrapper">
         <form onSubmit={handleSubmit}>

@@ -20,12 +20,12 @@ export default function Home() {
             The music you need, just when you need it
           </h1>
           <p className={styles.description}>
-            You know that song that just gets how you’re feeling? Here, you pick
-            your mood, and we’ll drop the perfect soundtrack—straight from
-            Spotify. 🔥
+            You know that song that just gets how you are feeling? Here, you
+            pick your mood, and we will drop the perfect soundtrack—straight
+            from Spotify. 🔥
           </p>
           <p className={styles.description2}>
-            Set your vibe, and we’ll hit you with the perfect Spotify
+            Set your vibe, and we will hit you with the perfect Spotify
             soundtrack. 🔥
           </p>
           <div className={styles.cto}>
@@ -80,8 +80,8 @@ export default function Home() {
               <Icons.FingerPrint className={styles.stepIcon} />
               <h3>Access Spotify</h3>
               <p>
-                Connect your Spotify account and we'll manage your playlists
-                based on how you're feeling.
+                Connect your Spotify account and we will manage your playlists
+                based on how you are feeling.
               </p>
             </div>
 
@@ -89,7 +89,7 @@ export default function Home() {
               <Icons.Feeling className={styles.stepIcon} />
               <h3>Choose your mood</h3>
               <p>
-                Tell us how you're feeling right now and let the magic happen.
+                Tell us how you are feeling right now and let the magic happen.
               </p>
             </div>
 
