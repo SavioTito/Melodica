@@ -1,23 +1,23 @@
 
-# 🎶 Melodica
+# Melodica
 
 **Melodica** is a mood-based music recommendation app that helps you discover playlists based on how you feel
 
-## 🌟 Features
+## Features
 
-- 🔐 Connect your Spotify account with OAuth
-- 😌 Select your current mood (Happy, Sad, relaxed, focused, romantic, and angry)
-- 🔍 Get playlist recommendations tailored to your mood
-- 🎧 Open playlists directly in Spotify
-- 💾 Save the ones you love to your Spotify library
+-  Connect your Spotify account with OAuth
+-  Select your current mood (Happy, Sad, relaxed, focused, romantic, and angry)
+-  Get playlist recommendations tailored to your mood
+-  Open playlists directly in Spotify
+-  Save the ones you love to your Spotify library
 
-## 🚀 Built With
+## Built With
 
 - [Next.js](https://nextjs.org/) – React framework for SSR and fast builds
 - [Spotify Web API](https://developer.spotify.com/documentation/web-api/)
 - [OAuth 2.0](https://developer.spotify.com/documentation/general/guides/authorization-guide/) – for Spotify login
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -57,14 +57,14 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-## 📸 Screenshots
+## Screenshots
 
 ![Melodica homepage](./public/preview.png)
 
-## 🤝 Contributing
+## Contributing
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
 
-## 📄 License
+## License
 
 [MIT](./LICENSE)
