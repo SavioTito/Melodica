@@ -55,7 +55,6 @@ html {
 
 .table {
   width: 95%;
-  min-width: 800px;
   border-collapse: collapse;
 }
 
@@ -134,7 +133,6 @@ tbody tr:hover {
     width: 70%;
     font-size: var(--title-5);
   }
-
   .table {
     min-width: 1000px;
   }

@@ -123,7 +123,7 @@ function MoodSelectionContent() {
             disabled={!selectedMood || isLoading}
           >
             {isLoading ? (
-              "Carregando..."
+              "Loading..."
             ) : (
               <>
                 <Icons.Search className="moodSubmitIcon" />
