@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import { Inter, Montserrat } from "next/font/google";
 import { usePathname } from "next/navigation";
 import "./globals.css";
@@ -29,6 +30,15 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="pt-BR">
+      <Head>
+        <meta
+          name="description"
+          content="Mood-based music recommendation app"
+        />
+        <title>Melodica | Mood-based music recommendation app</title>
+        <link rel="icon" href="/favmelodica.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <body className={`${inter.variable} ${montserrat.variable}`}>
         {!hideHeaderFooter && (
           <header className="header">

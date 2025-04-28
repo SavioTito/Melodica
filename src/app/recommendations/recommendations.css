@@ -47,14 +47,15 @@ html {
 .table-container {
   width: 100%;
   max-height: 600px;
+  overflow-x: auto;
   overflow-y: auto;
-  display: flex;
-  justify-content: center;
+  display: block;
   border: none;
 }
 
 .table {
   width: 95%;
+  min-width: 800px;
   border-collapse: collapse;
 }
 
@@ -118,4 +119,50 @@ tbody tr:hover {
   height: 15px;
   position: relative;
   top: 3px;
+}
+
+/*Responsive*/
+@media (max-width: 820px) {
+  .playlistBanner {
+    height: 20vh;
+  }
+  .playlistBanner .bannerContent {
+    padding: 0 0 35px 35px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+  }
+  .bannerContent .bannerTitle {
+    width: 70%;
+    font-size: var(--title-5);
+  }
+
+  .table {
+    min-width: 1000px;
+  }
+  .playlist-image {
+    width: 45px;
+    height: 45px;
+    margin-right: 0.2em;
+    border-radius: 0;
+  }
+  .openPlaylist {
+    padding: 8px 12px;
+    font-size: var(--paragraph-4);
+  }
+}
+
+@media (max-width: 400px) {
+  .playlistBanner {
+    height: 15vh;
+  }
+  .playlistBanner .bannerContent {
+    padding: 0 0 10px 10px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3));
+  }
+  .bannerContent .bannerTitle {
+    width: 97%;
+    font-size: var(--paragraph-1);
+  }
+  .bannerContent span {
+    font-size: var(--paragraph-3);
+  }
 }

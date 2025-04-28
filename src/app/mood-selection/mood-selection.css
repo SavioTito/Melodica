@@ -11,7 +11,8 @@ html {
   padding-top: 10vh;
 }
 
-.moodSelection h1 {
+.moodSelection h1,
+.title2 {
   width: 48%;
   text-align: center;
   font-weight: bold;
@@ -27,10 +28,12 @@ html {
   -webkit-text-fill-color: transparent;
   margin-bottom: 7vh;
 }
-.moodSelection .moodSelectionWrapper{
-    width: 80%;
+.title2 {
+  display: none;
 }
-
+.moodSelection .moodSelectionWrapper {
+  width: 80%;
+}
 .moodSelectionWrapper .groupMood {
   width: 100%;
   display: flex;
@@ -89,30 +92,69 @@ html {
   color: var(--black);
 }
 
-.moodSelectionWrapper .moodSubmit{
-    display: flex;
-    padding: 13px 18px;
-    margin: 6% 0 0 9%;
-    border: none;
-    border-radius: 25px;
-    color: var(--black);
-    font-size: var(--paragraph-3);
-    cursor: pointer;
-    background-color: var(--white);
+.moodSelectionWrapper .moodSubmit {
+  display: flex;
+  padding: 13px 18px;
+  margin: 6% 0 0 9%;
+  border: none;
+  border-radius: 25px;
+  color: var(--black);
+  font-size: var(--paragraph-3);
+  cursor: pointer;
+  background-color: var(--white);
 }
-.moodSubmit .moodSubmitIcon{
-    width: 17px;
-    height: 17px;
-    margin-right: 2px;
+.moodSubmit .moodSubmitIcon {
+  width: 17px;
+  height: 17px;
+  margin-right: 2px;
 }
-.moodSubmit:disabled{
-    cursor: not-allowed;
-    background-color: var(--grey);
+.moodSubmit:disabled {
+  cursor: not-allowed;
+  background-color: var(--grey);
 }
 
 /*Responsive*/
-@media (max-width: 820px){
-  .moodSelection h1{
+@media (max-width: 820px) {
+  .moodSelection h1 {
+    display: none;
+  }
+  .moodSelection .title2 {
+    display: block;
+    width: 80%;
+    font-size: var(--title-2);
+  }
+  .moodSelection .moodSelectionWrapper {
     width: 100%;
+  }
+  .groupMood .moodCard {
+    height: 115px;
+  }
+}
+
+@media (max-width: 600px) {
+  .moodSelection .title2 {
+    width: 85%;
+    font-size: var(--title-3);
+  }
+  .moodSelection .moodSelectionWrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .moodSelectionWrapper {
+    width: 100%;
+  }
+  .moodSelectionWrapper .groupMood {
+    width: 100%;
+    gap: 8px;
+  }
+  .groupMood .moodCard {
+    width: 40%;
+    height: 110px;
+  }
+  .moodCardContent span {
+    font-size: var(--paragraph-3);
+  }
+  .moodSelectionWrapper .moodSubmit {
+    padding: 13px;
   }
 }

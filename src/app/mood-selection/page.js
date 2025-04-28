@@ -84,6 +84,7 @@ function MoodSelectionContent() {
       <h1>
         Tell us how you feel and we will recommend the perfect playlists for you
       </h1>
+      <h1 className="title2">Share your mood and get the perfect playlists.</h1>
       <div className="moodSelectionWrapper">
         <form onSubmit={handleSubmit}>
           <div className="groupMood">
