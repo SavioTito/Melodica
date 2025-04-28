@@ -1,6 +1,7 @@
 "use client";
 
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter, Montserrat } from "next/font/google";
 import { usePathname } from "next/navigation";
 import "./globals.css";
