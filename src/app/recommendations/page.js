@@ -1,11 +1,16 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import {
+  getPlaylistDuration,
+  formatDuration,
+  isPlaylistSaved,
+  savePlaylist,
+  unsavePlaylist,
+} from "@/utils/spotify";
 import "./recommendations.css";
-import Icons from "@/components/icons";
 import Image from "next/image";
 import Link from "next/link";
-import { title } from "process";
-import { formatDuration } from "@/utils/spotify";
+import Icons from "@/components/icons";
 
 const moodBanners = {
   happy: {
@@ -49,43 +54,65 @@ const moodBanners = {
 export default function Recommendations() {
   const [playlists, setPlaylists] = useState([]);
   const [mood, setMood] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedMood = sessionStorage.getItem("userMood");
-    setMood(storedMood);
+    const fetchData = async () => {
+      const storedMood = sessionStorage.getItem("userMood");
+      const token = sessionStorage.getItem("spotifyToken");
+      setMood(storedMood);
 
-    // Retrieve playlists from sessionStorage
-    const playlistsData = sessionStorage.getItem("playlists");
-    if (playlistsData) {
-      const parsedPlaylists = JSON.parse(playlistsData);
-
-      // Filter out null or undefined playlists
-      const validPlaylists = parsedPlaylists.filter(
-        (playlist) => playlist && playlist.name
+      const rawPlaylists = JSON.parse(
+        sessionStorage.getItem("playlists") || "[]"
       );
-      setPlaylists(validPlaylists);
-    }
+
+      const enriched = await Promise.all(
+        rawPlaylists.map(async (playlist) => {
+          const durationMs = await getPlaylistDuration(playlist.id, token);
+          const saved = await isPlaylistSaved(playlist.id, token);
+          return { ...playlist, durationMs, saved };
+        })
+      );
+
+      setPlaylists(enriched);
+      setLoading(false);
+    };
+
+    fetchData();
   }, []);
 
-  const moodData = moodBanners[mood];
+  const toggleSave = async (playlistId) => {
+    const token = sessionStorage.getItem("spotifyToken");
+
+    setPlaylists((prev) =>
+      prev.map((p) => (p.id === playlistId ? { ...p, saved: !p.saved } : p))
+    );
+
+    const target = playlists.find((p) => p.id === playlistId);
+    if (!target) return;
+
+    if (target.saved) {
+      await unsavePlaylist(playlistId, token);
+    } else {
+      await savePlaylist(playlistId, token);
+    }
+  };
+
+  const moodData = moodBanners[mood] || {};
+
+  if (loading) return <p>Loading recommendations...</p>;
 
   return (
     <main className="playlistContainer">
       <header
         className="playlistBanner"
         style={{
-          backgroundImage: `url(${
-            moodBanners[mood]?.image || "public/img/m-darkground.webp"
-          })`,
+          backgroundImage: `url(${moodData.image || "/img/m-darkground.webp"})`,
         }}
       >
         <div className="bannerContent">
-          <h1 className="bannerTitle">
-            {moodBanners[mood]?.title || "Recommendations"}
-          </h1>
-          <span>
-            {moodBanners[mood]?.description || "Playlists chosen for you."}
-          </span>
+          <h1 className="bannerTitle">{moodData.title || "Recommendations"}</h1>
+          <span>{moodData.description || "Playlists chosen for you."}</span>
         </div>
       </header>
 
@@ -94,19 +121,21 @@ export default function Recommendations() {
           <table className="table">
             <thead>
               <tr>
-                <th className="table-head">Title</th>
-                <th className="table-head">Description</th>
-                <th className="table-head">Tracks</th>
-                <th className="table-head">Duration</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Tracks</th>
+                <th>Duration</th>
+                <th>Save</th>
+                <th>Link</th>
               </tr>
             </thead>
             <tbody>
-              {playlists.map((playlist, index) => (
-                <tr key={`${playlist.id}-${index}`}>
+              {playlists.map((playlist) => (
+                <tr key={playlist.id}>
                   <td className="title-column">
                     <Image
                       src={playlist.images[0].url}
-                      alt="icone"
+                      alt="cover"
                       width={55}
                       height={55}
                       className="playlist-image"
@@ -116,17 +145,23 @@ export default function Recommendations() {
                       : playlist.name.toUpperCase()}
                   </td>
                   <td className="description">
-                    {playlist.description.length > 30
+                    {playlist.description?.length > 30
                       ? playlist.description.substring(0, 50).toLowerCase() +
                         "..."
-                      : playlist.description.toLowerCase() ||
-                        "No description for this. Just feel it "}
+                      : playlist.description?.toLowerCase() || "no description"}
                   </td>
                   <td>{playlist.tracks.total}</td>
                   <td>{formatDuration(playlist.durationMs)}</td>
                   <td>
-                    <button className="savePlaylist">
-                      <Icons.Save className="playlistsIcon" />
+                    <button
+                      className="savePlaylist"
+                      onClick={() => toggleSave(playlist.id)}
+                    >
+                      {playlist.saved ? (
+                        <Icons.Unsave className="playlistsIcon" />
+                      ) : (
+                        <Icons.Save className="playlistsIcon" />
+                      )}
                     </button>
                   </td>
                   <td>
@@ -136,8 +171,7 @@ export default function Recommendations() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Open
-                      <Icons.Link className="playlistsIcon" />
+                      Open <Icons.Link className="playlistsIcon" />
                     </Link>
                   </td>
                 </tr>
