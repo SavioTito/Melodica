@@ -4,6 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Icons from "@/components/icons";
 import { fetchPlaylistsByGenres } from "@/utils/spotify";
+import { getValidSpotifyToken } from "@/lib/spotify-auth"; // Import the helper function
 import "./mood-selection.css";
 
 const moodToGenres = {
@@ -43,17 +44,26 @@ function MoodSelectionContent() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    let accessToken = searchParams.get("access_token");
-    let refreshToken = searchParams.get("refresh_token");
+    // Try to get a valid token (check if expired or need refresh)
+    async function checkToken() {
+      let accessToken = searchParams.get("access_token");
+      let refreshToken = searchParams.get("refresh_token");
 
-    if (accessToken) {
-      localStorage.setItem("spotify_access_token", accessToken);
-      localStorage.setItem("spotify_refresh_token", refreshToken);
-    } else {
-      accessToken = localStorage.getItem("spotify_access_token");
+      if (accessToken) {
+        localStorage.setItem("spotify_access_token", accessToken);
+        localStorage.setItem("spotify_refresh_token", refreshToken);
+      } else {
+        accessToken = await getValidSpotifyToken(); // Get the valid token (check if it's expired or refresh it)
+      }
+
+      if (accessToken) {
+        setToken(accessToken);
+      } else {
+        router.push("/api/login"); // Redirect to login if no valid token
+      }
     }
 
-    setToken(accessToken);
+    checkToken();
   }, [searchParams, router]);
 
   const handleSubmit = async (e) => {

@@ -23,15 +23,21 @@ export async function GET(req) {
       }
     );
 
-    const { access_token, refresh_token } = response.data;
-    
-    const redirectUrl = new URL(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mood-selection`);
+    const { access_token, refresh_token, expires_in } = response.data;
+
+    const redirectUrl = new URL(
+      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/mood-selection`
+    );
     redirectUrl.searchParams.set("access_token", access_token);
     redirectUrl.searchParams.set("refresh_token", refresh_token);
+    redirectUrl.searchParams.set("expires_in", expires_in);
 
     return Response.redirect(redirectUrl.toString(), 302);
   } catch (error) {
-    console.error("Error getting Spotify token:", error.response?.data || error);
+    console.error(
+      "Error getting Spotify token:",
+      error.response?.data || error
+    );
     return new Response("Authentication failed", { status: 500 });
   }
 }

@@ -5,6 +5,7 @@ export const getPlaylistDuration = async (playlistId, token) => {
   let totalDurationMs = 0;
   let nextUrl = `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=100`;
 
+  console.log("Access Token:", token);
   while (nextUrl) {
     const res = await fetch(nextUrl, {
       headers: { Authorization: `Bearer ${token}` },
@@ -106,4 +107,30 @@ export const unsavePlaylist = async (playlistId, token) => {
     }
   );
   return res.ok;
+};
+
+// ✅ NEW: Enrich a single playlist with duration + save status
+export const enrichPlaylist = async (playlist, token) => {
+  const durationMs = await getPlaylistDuration(playlist.id, token);
+  const saved = await isPlaylistSaved(playlist.id, token);
+  return { ...playlist, durationMs, saved };
+};
+
+// ✅ NEW: Load mood, token, and playlists from sessionStorage (for reuse)
+export const getSessionData = () => {
+  const mood = sessionStorage.getItem("userMood");
+  const token = sessionStorage.getItem("spotifyToken");
+  const raw = JSON.parse(sessionStorage.getItem("playlists") || "[]");
+  return { mood, token, rawPlaylists: raw };
+};
+
+// ✅ NEW: Toggle Save/Unsave status
+export const toggleSavePlaylist = async (playlist, token) => {
+  if (playlist.saved) {
+    await unsavePlaylist(playlist.id, token);
+    return { ...playlist, saved: false };
+  } else {
+    await savePlaylist(playlist.id, token);
+    return { ...playlist, saved: true };
+  }
 };

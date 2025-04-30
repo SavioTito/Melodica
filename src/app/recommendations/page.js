@@ -1,11 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import {
-  getPlaylistDuration,
+  enrichPlaylist,
+  getSessionData,
   formatDuration,
-  isPlaylistSaved,
-  savePlaylist,
-  unsavePlaylist,
+  toggleSavePlaylist,
 } from "@/utils/spotify";
 import "./recommendations.css";
 import Image from "next/image";
@@ -57,45 +56,30 @@ export default function Recommendations() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const storedMood = sessionStorage.getItem("userMood");
-      const token = sessionStorage.getItem("spotifyToken");
-      setMood(storedMood);
-
-      const rawPlaylists = JSON.parse(
-        sessionStorage.getItem("playlists") || "[]"
-      );
+    const fetchRecommendations = async () => {
+      const { mood, token, rawPlaylists } = getSessionData();
+      setMood(mood);
 
       const enriched = await Promise.all(
-        rawPlaylists.map(async (playlist) => {
-          const durationMs = await getPlaylistDuration(playlist.id, token);
-          const saved = await isPlaylistSaved(playlist.id, token);
-          return { ...playlist, durationMs, saved };
-        })
+        rawPlaylists.map((playlist) => enrichPlaylist(playlist, token))
       );
 
       setPlaylists(enriched);
       setLoading(false);
     };
 
-    fetchData();
+    fetchRecommendations();
   }, []);
 
-  const toggleSave = async (playlistId) => {
+  const handleToggleSave = async (playlistId) => {
     const token = sessionStorage.getItem("spotifyToken");
+    const playlist = playlists.find((p) => p.id === playlistId);
+    if (!playlist) return;
 
+    const updated = await toggleSavePlaylist(playlist, token);
     setPlaylists((prev) =>
-      prev.map((p) => (p.id === playlistId ? { ...p, saved: !p.saved } : p))
+      prev.map((p) => (p.id === playlistId ? updated : p))
     );
-
-    const target = playlists.find((p) => p.id === playlistId);
-    if (!target) return;
-
-    if (target.saved) {
-      await unsavePlaylist(playlistId, token);
-    } else {
-      await savePlaylist(playlistId, token);
-    }
   };
 
   const moodData = moodBanners[mood] || {};
@@ -155,7 +139,7 @@ export default function Recommendations() {
                   <td>
                     <button
                       className="savePlaylist"
-                      onClick={() => toggleSave(playlist.id)}
+                      onClick={() => handleToggleSave(playlist.id)}
                     >
                       {playlist.saved ? (
                         <Icons.Unsave className="playlistsIcon" />
